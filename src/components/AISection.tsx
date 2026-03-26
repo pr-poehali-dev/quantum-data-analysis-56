@@ -1,18 +1,18 @@
 import { motion } from "framer-motion"
-import { ChevronRight, Check, Paperclip, Globe, Lightbulb } from "lucide-react"
+import { ChevronRight, Check } from "lucide-react"
 
-const agents = [
-  { name: "Cursor", isAgent: true, selected: true, icon: "◇" },
-  { name: "GitHub Copilot", isAgent: true, selected: false, icon: "◉" },
-  { name: "Sentry", isAgent: true, selected: false, icon: "◈" },
-  { name: "Leela", isAgent: false, selected: false, icon: "○" },
-  { name: "Codex", isAgent: true, selected: false, icon: "◎" },
-  { name: "Conor", isAgent: false, selected: false, icon: "○" },
+const stories = [
+  { name: "Алия Сейткали", country: "Казахстан", isActive: true, selected: true, icon: "◇" },
+  { name: "Мария Иванова", country: "Россия", isActive: true, selected: false, icon: "◉" },
+  { name: "Нодир Рашидов", country: "Узбекистан", isActive: true, selected: false, icon: "◈" },
+  { name: "Тамара Акопян", country: "Армения", isActive: false, selected: false, icon: "○" },
+  { name: "Дмитрий Ковалёв", country: "Беларусь", isActive: true, selected: false, icon: "◎" },
+  { name: "Лейла Гасанова", country: "Азербайджан", isActive: false, selected: false, icon: "○" },
 ]
 
 export function AISection() {
   return (
-    <div className="relative z-20 py-40" style={{ backgroundColor: "#09090B" }}>
+    <div id="stories" className="relative z-20 py-40" style={{ backgroundColor: "#09090B" }}>
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none"
         style={{
@@ -22,7 +22,6 @@ export function AISection() {
       />
       <div className="w-full flex justify-center px-6">
         <div className="w-full max-w-5xl">
-          {/* Section label */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,12 +29,11 @@ export function AISection() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-2 mb-6"
           >
-            <div className="w-2 h-2 rounded-full bg-blue-500" />
-            <span className="text-zinc-400 text-sm">Искусственный интеллект</span>
+            <div className="w-2 h-2 rounded-full bg-indigo-500" />
+            <span className="text-zinc-400 text-sm">Истории участников</span>
             <ChevronRight className="w-4 h-4 text-zinc-500" />
           </motion.div>
 
-          {/* Heading */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -49,10 +47,9 @@ export function AISection() {
               lineHeight: 1.1,
             }}
           >
-            Разработка с ИИ-помощником
+            Голоса молодёжи со всего мира
           </motion.h2>
 
-          {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -60,11 +57,10 @@ export function AISection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-zinc-400 max-w-md mb-8"
           >
-            <span className="text-white font-medium">Orbit для агентов.</span> Выбирайте из множества ИИ-агентов и
-            делегируйте задачи: от генерации кода до других технических задач.
+            <span className="text-white font-medium">Реальные истории.</span> Молодые люди из разных
+            стран рассказывают о том, как дружба с людьми других культур изменила их жизнь.
           </motion.p>
 
-          {/* Learn more button */}
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,11 +68,11 @@ export function AISection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="px-5 py-2.5 bg-zinc-800 text-zinc-300 rounded-lg border border-zinc-700 hover:bg-zinc-700 transition-colors text-sm flex items-center gap-2 mb-16"
           >
-            Подробнее
+            Все истории
             <ChevronRight className="w-4 h-4" />
           </motion.button>
 
-          {/* Agent dropdown mockup */}
+          {/* Stories list mockup */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +98,6 @@ export function AISection() {
                   position: "relative",
                 }}
               >
-                {/* Glass overlay effect */}
                 <div
                   style={{
                     border: "1px solid rgba(66, 66, 66, 0.5)",
@@ -119,7 +114,6 @@ export function AISection() {
                     zIndex: 10,
                   }}
                 />
-
                 <div
                   style={{
                     background: "linear-gradient(180deg, transparent 0%, #09090B 100%)",
@@ -133,18 +127,16 @@ export function AISection() {
                   }}
                 />
 
-                {/* Input field */}
                 <div className="bg-zinc-800/50 border border-zinc-700 rounded-t-xl px-5 py-4">
-                  <span className="text-zinc-500 italic">Назначить...</span>
+                  <span className="text-zinc-500 italic">Выберите участника...</span>
                 </div>
 
-                {/* Dropdown options */}
                 <div className="bg-zinc-900/80 border border-t-0 border-zinc-700 rounded-b-xl py-1">
-                  {agents.map((agent, index) => (
+                  {stories.map((story, index) => (
                     <div
-                      key={agent.name}
+                      key={story.name}
                       style={
-                        agent.selected
+                        story.selected
                           ? {
                               transform: "scale(1.04) rotateX(17deg)",
                               background: "linear-gradient(#343434 0%, #2d2d2d 100%)",
@@ -165,22 +157,20 @@ export function AISection() {
                     >
                       <div
                         className="flex items-center justify-between h-full"
-                        style={{
-                          paddingLeft: "24px",
-                          paddingRight: "24px",
-                          gap: "12px",
-                        }}
+                        style={{ paddingLeft: "24px", paddingRight: "24px", gap: "12px" }}
                       >
                         <div className="flex items-center gap-3">
-                          <span className="text-zinc-400 text-lg">{agent.icon}</span>
-                          <span className={agent.selected ? "text-white font-medium" : "text-zinc-300"}>
-                            {agent.name}
+                          <span className="text-zinc-400 text-lg">{story.icon}</span>
+                          <span className={story.selected ? "text-white font-medium" : "text-zinc-300"}>
+                            {story.name}
                           </span>
-                          {agent.isAgent && (
-                            <span className="text-xs bg-zinc-700 text-zinc-400 px-2 py-0.5 rounded">Агент</span>
+                          {story.isActive && (
+                            <span className="text-xs bg-indigo-900/50 text-indigo-300 px-2 py-0.5 rounded">
+                              {story.country}
+                            </span>
                           )}
                         </div>
-                        {agent.selected && <Check className="w-4 h-4 text-zinc-400" />}
+                        {story.selected && <Check className="w-4 h-4 text-indigo-400" />}
                       </div>
                     </div>
                   ))}
@@ -189,7 +179,6 @@ export function AISection() {
             </div>
           </motion.div>
 
-          {/* Bottom divider with two columns */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -198,136 +187,39 @@ export function AISection() {
             className="mt-16"
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
-              {/* Left column */}
               <div className="border-t border-r border-b border-zinc-800/60 pt-12 pr-12 pb-16">
-                <h3 className="text-zinc-200 font-medium text-xl mb-3">Автопилот для продукта</h3>
+                <h3 className="text-zinc-200 font-medium text-xl mb-3">Обменные программы</h3>
                 <p className="text-zinc-500 text-base mb-8">
-                  Оптимизируйте рабочие процессы с ИИ-ассистентом для рутинных и ручных задач.
+                  Молодёжные обмены позволяют познакомиться с культурой другого народа изнутри.
+                  Участники живут в семьях, учатся вместе и строят дружбу на всю жизнь.
                 </p>
-
-                {/* Triage Intelligence Card */}
-                <div className="bg-zinc-900/30 border border-zinc-800/60 rounded-xl p-5">
-                  <div className="flex items-center gap-2 mb-5">
-                    <svg className="w-4 h-4 text-zinc-500" viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 0L9.5 5.5L15 7L9.5 8.5L8 14L6.5 8.5L1 7L6.5 5.5L8 0Z" />
-                    </svg>
-                    <span className="text-zinc-500 text-sm">
-                      Умная <span className="text-zinc-300">сортировка</span>
-                    </span>
-                  </div>
-
-                  {/* Suggestions Row */}
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-zinc-600 text-sm w-20">Рекомендации</span>
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="flex items-center gap-1.5 rounded-md px-2 py-1 text-sm"
-                        style={{ background: "#7170ff" }}
-                      >
-                        <span className="w-4 h-4 bg-white/30 rounded-full" />
-                        <span className="text-white">nan</span>
-                      </span>
-                      <span className="flex items-center gap-1.5 bg-zinc-800/30 rounded-md px-2 py-1 text-sm text-zinc-600">
-                        <span className="w-3 h-3 border border-zinc-700 rounded" />
-                        Рефакторинг приложения
-                      </span>
-                      <span className="flex items-center gap-1.5 text-sm text-zinc-700">
-                        <span className="w-2 h-2 bg-zinc-600 rounded-full" />
-                        Slack
-                      </span>
+                <div className="flex flex-col gap-3">
+                  {["Летние лагеря единства", "Студенческие обмены", "Культурные стажировки"].map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <div className="w-5 h-5 rounded-full bg-indigo-900/50 border border-indigo-700 flex items-center justify-center flex-shrink-0">
+                        <Check className="w-3 h-3 text-indigo-400" />
+                      </div>
+                      <span className="text-zinc-400 text-sm">{item}</span>
                     </div>
-                  </div>
-
-                  {/* Duplicate Row */}
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-zinc-600 text-sm w-20">Дубликат</span>
-                  </div>
-
-                  {/* Related Row */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-zinc-600 text-sm w-20">Связано с</span>
-                  </div>
-
-                  {/* Expanded Suggestion Card */}
-                  <div className="bg-zinc-800/40 rounded-lg p-4 ml-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-5 h-5 bg-zinc-600 rounded-full" />
-                      <span className="text-zinc-300 text-sm font-medium">nan</span>
-                    </div>
-
-                    <p className="text-zinc-500 text-xs mb-2">Почему этот исполнитель</p>
-                    <p className="text-zinc-500 text-sm mb-4">
-                      Этот человек работал над похожими задачами, связанными с производительностью мобильного приложения
-                    </p>
-
-                    <p className="text-zinc-500 text-xs mb-2">Альтернативы</p>
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="flex items-center gap-1.5 bg-zinc-700/50 rounded-md px-2 py-1 text-sm">
-                        <span className="w-4 h-4 bg-zinc-500 rounded-full" />
-                        <span className="text-zinc-400">yann</span>
-                      </span>
-                      <span className="flex items-center gap-1.5 bg-zinc-700/50 rounded-md px-2 py-1 text-sm">
-                        <span className="w-4 h-4 bg-zinc-500 rounded-full" />
-                        <span className="text-zinc-400">erin</span>
-                      </span>
-                    </div>
-
-                    <button className="w-full flex items-center justify-center gap-2 bg-zinc-700/50 hover:bg-zinc-600/50 text-zinc-300 text-sm py-2.5 rounded-md transition-colors">
-                      <Check className="w-4 h-4" />
-                      Принять
-                    </button>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Right column */}
               <div className="border-t border-b border-zinc-800/60 pt-12 pl-12 pb-16">
-                <h3 className="text-zinc-200 font-medium text-xl mb-3">Orbit MCP</h3>
+                <h3 className="text-zinc-200 font-medium text-xl mb-3">Диалог культур</h3>
                 <p className="text-zinc-500 text-base mb-8">
-                  Подключите Orbit к любимым инструментам: Cursor, Claude, ChatGPT и другим.
+                  Онлайн-форумы, круглые столы и дебаты — пространства, где молодёжь обсуждает
+                  важные вопросы и находит общий язык поверх границ.
                 </p>
-
-                {/* MCP Code Snippet */}
-                <div className="bg-zinc-900/30 border border-zinc-800/60 rounded-xl p-5 font-mono text-sm">
-                  <p className="text-zinc-700 mb-3">//mcp.orbit.app/sse</p>
-                  <div className="space-y-1 mb-6">
-                    <p>
-                      <span className="text-orange-400/70">"mcpServers"</span>
-                      <span className="text-zinc-500">: {"{"}</span>
-                    </p>
-                    <p className="pl-4">
-                      <span className="text-orange-400/70">"orbit"</span>
-                      <span className="text-zinc-500">: {"{"}</span>
-                    </p>
-                    <p className="pl-8">
-                      <span className="text-orange-400/70">"command"</span>
-                      <span className="text-zinc-500">: </span>
-                      <span className="text-green-400/70">"npx"</span>
-                    </p>
-                  </div>
-
-                  {/* Ask Anything Input */}
-                  <div className="bg-zinc-800/40 rounded-lg p-4">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="w-0.5 h-5 bg-zinc-600" />
-                      <span className="text-zinc-600">Спросите что угодно</span>
+                <div className="flex flex-col gap-3">
+                  {["Международные форумы", "Онлайн-дискуссии", "Совместные проекты"].map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <div className="w-5 h-5 rounded-full bg-indigo-900/50 border border-indigo-700 flex items-center justify-center flex-shrink-0">
+                        <Check className="w-3 h-3 text-indigo-400" />
+                      </div>
+                      <span className="text-zinc-400 text-sm">{item}</span>
                     </div>
-
-                    <div className="flex items-center gap-2">
-                      <button className="flex items-center gap-1.5 border border-zinc-700/60 text-zinc-500 text-sm px-3 py-1.5 rounded-full hover:bg-zinc-700/30 transition-colors">
-                        <Paperclip className="w-3.5 h-3.5" />
-                        Файл
-                      </button>
-                      <button className="flex items-center gap-1.5 border border-zinc-700/60 text-zinc-500 text-sm px-3 py-1.5 rounded-full hover:bg-zinc-700/30 transition-colors">
-                        <Globe className="w-3.5 h-3.5" />
-                        Поиск
-                      </button>
-                      <button className="flex items-center gap-1.5 border border-zinc-700/60 text-zinc-500 text-sm px-3 py-1.5 rounded-full hover:bg-zinc-700/30 transition-colors">
-                        <Lightbulb className="w-3.5 h-3.5" />
-                        Анализ
-                      </button>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>

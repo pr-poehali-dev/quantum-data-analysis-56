@@ -37,7 +37,7 @@ export function Hero3DStage() {
       <section className="relative min-h-screen overflow-hidden" style={{ backgroundColor: "#09090B" }}>
         <Navbar />
 
-        {/* Subtle glow */}
+        {/* Glow */}
         <div
           className="absolute pointer-events-none"
           style={{
@@ -46,32 +46,40 @@ export function Hero3DStage() {
             transform: "translate(-50%, -30%)",
             width: "1200px",
             height: "800px",
-            background: "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
           }}
         />
 
         {/* Main content */}
         <div className="relative z-10 pt-28 flex flex-col">
-          {/* Hero text - contained and centered */}
           <div className="w-full flex justify-center px-6 mt-16">
             <div className="w-full max-w-4xl">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10"
+              >
+                <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+                <span className="text-indigo-300 text-sm font-medium">Новостной портал молодёжного движения</span>
+              </motion.div>
+
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 className="text-4xl md:text-5xl lg:text-[56px] font-medium text-white leading-[1.1] text-balance"
               >
-                Orbit - инструмент для планирования и создания продуктов
+                Молодёжь за дружбу народов
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="mt-6 text-lg text-zinc-400"
+                className="mt-6 text-lg text-zinc-400 max-w-xl"
               >
-                Система для современной разработки.
-                <br />
-                Управляйте задачами, проектами и дорожными картами.
+                Новости, события и истории о том, как молодые люди разных культур и народов
+                строят мир дружбы, взаимопонимания и единства.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -79,18 +87,18 @@ export function Hero3DStage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mt-8 flex items-center gap-6"
               >
-                <button className="px-5 py-2.5 bg-white text-zinc-900 font-medium rounded-lg hover:bg-zinc-100 transition-colors text-sm">
-                  Начать работу
-                </button>
-                <button className="text-zinc-300 font-medium hover:text-white transition-colors flex items-center gap-2 text-sm">
-                  <span className="text-zinc-500">Новинка:</span> Orbit-агент для Slack
+                <a href="#news" className="px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-500 transition-colors text-sm">
+                  Читать новости
+                </a>
+                <a href="#join" className="text-zinc-300 font-medium hover:text-white transition-colors flex items-center gap-2 text-sm">
+                  <span className="text-zinc-500">Актуально:</span> Фестиваль народов мира — 2026
                   <span aria-hidden="true">→</span>
-                </button>
+                </a>
               </motion.div>
             </div>
           </div>
 
-          {/* 3D Stage - full bleed */}
+          {/* 3D Stage */}
           <div
             className="relative mt-16"
             style={{
@@ -111,7 +119,6 @@ export function Hero3DStage() {
               }}
             />
 
-            {/* Perspective container */}
             <div
               style={{
                 transform: `translateY(${yOffset}px)`,
@@ -125,7 +132,6 @@ export function Hero3DStage() {
                 position: "relative",
               }}
             >
-              {/* Transformed base */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
